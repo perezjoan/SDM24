@@ -1,5 +1,40 @@
 # README: Geographic Data Analysis 
 
+## Main Objective
+This project aims to detect and analyze points of interest (POI) within a defined geographic area, here Imredd in Nice. We use a Python script to identify and visualize these points by leveraging geographic data, APIs, or other information sources.
+
+## Installation Steps
+Follow these steps to run Python algorithms on Windows:
+Download and install QGIS, tested with version 3.40.1.
+Install the Anaconda distribution of Python: Anaconda3-2024.10-1-Windows-x86_64 - Python 3.12.
+Create a specific environment IMREDD : 
+1. Open Anaconda Prompt.
+
+2. Create and Activate the IMREDD Environment
+	
+	conda create -n IMREDD
+	conda activate IMREDD
+
+3. Install Necessary Packages
+
+	conda install jupyter
+	conda install -c conda-forge --strict-channel-priority osmnx
+	conda install -c conda-forge qgis
+	conda install -c conda-forge momepy
+	conda install -c conda-forge reportlab
+
+4. Launch Jupyter Notebook
+
+	jupyter notebook
+
+5. In Jupyter Home, open and run the .ipynb scripts. Always remember to use this environment with 'conda activate IMREDD'
+
+Activate the environment and run the associated Python scripts.
+Data Used
+ The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice.
+Detailed Objectives
+
+
 ## Introduction
 
 This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (Imredd), perform spatial analyses, and generate insights into urban structures and accessibility. The outputs include enriched geospatial datasets, clustering analyses, and comprehensive visualizations compiled into a professional PDF report.
