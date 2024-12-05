@@ -24,12 +24,16 @@ Create a specific environment IMREDD :
    		conda install -c conda-forge --strict-channel-priority osmnx
 		conda install -c conda-forge momepy
 		conda install -c conda-forge reportlab
+		conda install -c conda-forge matplotlib  
+		conda install -c conda-forge fiona
+		conda install -c conda-forge numpy
+		conda install -c conda-forge scikit-learn
 
-4. Launch Jupyter Notebook
+5. Launch Jupyter Notebook
 
 		jupyter notebook
 
-5. In Jupyter Home, open and run the .ipynb scripts. Always remember to use this environment with 'conda activate IMREDD'
+6. In Jupyter Home, open and run the .ipynb scripts. Always remember to use this environment with 'conda activate IMREDD'
 
 Activate the environment and run the associated Python scripts.
 
