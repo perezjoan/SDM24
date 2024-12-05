@@ -12,72 +12,32 @@ Create a specific environment IMREDD :
 
 2. Create and Activate the IMREDD Environment
 	
-	conda create -n IMREDD
-	conda activate IMREDD
+	          conda create -n IMREDD
+	          conda activate IMREDD
 
 3. Install Necessary Packages
 
-	conda install jupyter
-	conda install -c conda-forge --strict-channel-priority osmnx
-	conda install -c conda-forge qgis
-	conda install -c conda-forge momepy
-	conda install -c conda-forge reportlab
+		conda install jupyter
+   		conda install -c conda-forge --strict-channel-priority osmnx
+		conda install -c conda-forge momepy
+		conda install -c conda-forge reportlab
 
 4. Launch Jupyter Notebook
 
-	jupyter notebook
+		jupyter notebook
 
 5. In Jupyter Home, open and run the .ipynb scripts. Always remember to use this environment with 'conda activate IMREDD'
 
 Activate the environment and run the associated Python scripts.
-Data Used
- The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice.
+
+## Data Used
+The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice.
 Detailed Objectives
 
 
 ## Introduction
 
 This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (Imredd), perform spatial analyses, and generate insights into urban structures and accessibility. The outputs include enriched geospatial datasets, clustering analyses, and comprehensive visualizations compiled into a professional PDF report.
-
----
-
-## Modules Overview
-
-### **Module 1: Geographic Data Processing and Analysis**
-
-This script retrieves and processes OSM data, calculates key spatial indicators, and saves the results as a GeoPackage file. It includes:
-
-- **Data Retrieval**: Downloading buildings, streets, and Points of Interest (POI) from OSM using libraries like OSMnx and GeoPandas.
-- **Data Filtering**: Cleaning and keeping relevant attributes for buildings, streets, and POIs.
-- **Spatial Analysis**:
-  - Calculating building surface areas, shape indicators (convexity and elongation), and POI proximity.
-  - Estimating mobility network accessibility.
-- **Modeling (Optional)**: Predicting building floor counts using decision trees.
-- **Final Output**: A GeoPackage (`SDM24_Imredd_filtered.gpkg`) containing cleaned and enriched datasets.
-
----
-
-### **Module 2: Clustering Analysis**
-
-This script applies KMeans clustering on building features to identify spatial patterns. Key steps include:
-
-- **Data Preparation**: Loading processed data, selecting features (e.g., convexity, elongation, proximity to POIs), and normalizing values.
-- **Clustering**:
-  - Running KMeans for a range of cluster counts.
-  - Evaluating clustering quality using silhouette scores.
-- **Output**: A GeoPackage (`SDM24_Imredd_filtered_clusters.gpkg`) with cluster assignments and a silhouette score visualization for selecting optimal clusters.
-
----
-
-### **Module 3: Visualization and Reporting**
-
-This module generates maps, charts, and a structured PDF report summarizing the analysis. Key features include:
-
-- **Layer Visualization**: Creating individual and composite maps for roads, buildings, and POIs.
-- **Cluster Analysis Visualization**:
-  - Cluster profile and spider charts.
-  - Cluster distribution maps with custom legends and contextual base maps.
-- **PDF Report**: Compiling all visualizations and analyses into a comprehensive document (`geospatial_analysis_report.pdf`).
 
 ---
 
@@ -103,24 +63,13 @@ pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy scik
 
 ## Usage
 
-1. Place the required GeoPackage files (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`) in the working directory.
-2. Execute the modules in order:
+1. Execute the modules in order:
    - **Module 1**: Data retrieval and indicator calculation.
    - **Module 2**: Clustering analysis.
    - **Module 3**: Visualization and reporting.
-3. Check the outputs:
+2. Check the outputs:
    - Enriched GeoPackages (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`).
    - PDF report: `geospatial_analysis_report.pdf`.
-
----
-
-## Outputs
-
-- **Processed Datasets**: GeoPackages containing cleaned, enriched, and clustered geospatial data.
-- **Visualizations**:
-  - Maps of urban structures and accessibility.
-  - Cluster distribution maps and analysis charts.
-- **Report**: A structured PDF summarizing all analyses and visualizations.
 
 ---
 
@@ -134,15 +83,9 @@ pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy scik
 
 ---
 
-This toolkit provides a robust foundation for urban analysis and decision-making, enabling users to explore geographic data, identify patterns, and produce high-quality visual outputs.
-
-
-
-
-
-## Module1
+## Module 1
 This script retrieves, processes, and analyzes geographic data for a specific area (Imredd). The data is sourced from OpenStreetMap (OSM), and the final output is saved as a GeoPackage (`SDM24_Imredd_filtered.gpkg`). The steps involve retrieving building data, street network data, points of interest (POI), cleaning and filtering the data, calculating key indicators, and performing some basic spatial analyses. 
-### Key Steps in the Script
+### Key steps:
 #### 1. **Data Retrieval**
    - **Buildings:** OSM data related to buildings is downloaded for the specified bounding box using the OSMnx library. The data is cleaned to retain only valid polygons, and unnecessary columns are dropped.
    - **Streets:** The street network is retrieved from OSM using a graph-based approach, and the resulting graph is converted to a GeoDataFrame.
@@ -165,13 +108,7 @@ This script retrieves, processes, and analyzes geographic data for a specific ar
    - The model's performance is evaluated using accuracy on a test dataset, and predictions are made for the entire filtered building dataset.
 #### 6. **Final Output**
    - The final dataset, which contains both the original and enriched features, is saved into a new GeoPackage (`SDM24_Imredd_filtered.gpkg`) for further analysis or visualization.
-### Libraries and Tools Used:
-- **OSMnx**: For downloading OpenStreetMap data and working with street networks.
-- **Geopandas**: For handling geospatial data, performing spatial operations, and saving to GeoPackage format.
-- **Shapely**: For geometric operations like buffering.
-- **Pandas**: For data manipulation and handling missing values.
-- **Momepy**: For calculating shape indicators like convexity and elongation.
-- **Scikit-learn**: For building the decision tree model to predict the number of floors.
+
 ### Output:
 The script generates a GeoPackage containing several layers:
 - `osm_all_buildings`: Raw building data from OSM.
@@ -182,9 +119,9 @@ The script generates a GeoPackage containing several layers:
 - `filtered_poi`: Processed POI data (retaining only relevant attributes).
 - `filtered_buildings_v2`: Final dataset with additional predicted values for the number of floors (`FLPRED`).
 
-## Module2
+## Module 2
 This script performs clustering analysis on building data using the KMeans algorithm and evaluates the clustering quality using the silhouette score. The analysis is based on a set of building features, such as convexity, elongation, proximity to points of interest (POI), surface area, and mobility accessibility. The process involves loading geospatial data from a GeoPackage, normalizing the data, applying KMeans clustering for various numbers of clusters, evaluating the results using silhouette scores, and finally assigning the optimal clusters to each building.
-### Key Steps:
+### Key steps:
 1. **Loading Data**: 
    - The script loads the `filtered_buildings_v2` layer from a GeoPackage (`SDM24_Imredd_filtered.gpkg`), which contains building data with attributes like convexity, elongation, proximity to POI, surface area, and mobility access.
 2. **Data Preparation**:
@@ -201,21 +138,16 @@ This script performs clustering analysis on building data using the KMeans algor
    - A plot is generated to visualize the silhouette scores for different cluster counts, helping to visually determine the optimal number of clusters.
 7. **Exporting Results**:
    - The GeoDataFrame, now with assigned clusters, is saved to a new GeoPackage (`SDM24_Imredd_filtered_clusters.gpkg`) for further analysis or visualization.
-
 ### Output:
 - A new GeoPackage (`SDM24_Imredd_filtered_clusters.gpkg`) containing the clustered buildings, with a new column "cluster" indicating the assigned cluster label for each building.
 - A plot visualizing the silhouette scores for different numbers of clusters.
 
-## Module3
-
+## Module 3
 This Python script is a comprehensive geospatial analysis and visualization tool that performs various tasks, including loading GeoPackage files, generating maps, and analyzing clustered data. Below is an overview of the key features and functionalities:
-
-### Features
-
+### Key steps:
 1. **GeoPackage File Handling:**
    - The script utilizes GeoPandas to load and process GeoPackage files.
    - Layers from the files (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`) are loaded for analysis.
-
 2. **Data Visualization:**
    - **Multi-Layer Map Visualization:** Generates a panel with three maps representing:
      - Roads
@@ -223,12 +155,10 @@ This Python script is a comprehensive geospatial analysis and visualization tool
      - Residential Buildings
    - Overlays these layers with a base map using the `contextily` library.
    - Includes legends, titles, and a clean layout.
-
    - **Composite Map:** Combines multiple layers (roads, points of interest, and residential buildings) on a single map. Enhancements include:
      - Scale bar (via `matplotlib_scalebar`).
      - North arrow.
      - Custom legend.
-
 3. **Cluster Analysis:**
    - Loads and visualizes cluster data from GeoPackage files.
    - Defines unique cluster colors for clear representation.
@@ -236,7 +166,6 @@ This Python script is a comprehensive geospatial analysis and visualization tool
      - **Cluster Profile Chart:** Plots synthetic profile data for each cluster.
      - **Spider Chart:** Displays data across multiple categories like Convexity, Elongation, Surface Area, etc.
      - **Cluster Distribution Map:** Highlights building clusters on a map with a custom legend and contextual base map.
-
 4. **PDF Report Generation:**
    - Compiles all the generated figures and analyses into a structured PDF report.
    - Pages include:
@@ -247,35 +176,14 @@ This Python script is a comprehensive geospatial analysis and visualization tool
      5. Cluster Profile & Spider Charts.
      6. Cluster Distribution Map.
    - Outputs the report as `geospatial_analysis_report.pdf`.
-
 5. **Customization:**
    - Cluster data is flexible and supports user-defined inputs for visualization.
    - Base maps and map projections can be tailored to specific requirements.
-
----
-
-### Requirements
-
-The following Python libraries are required to run this script:
-- `geopandas`
-- `matplotlib`
-- `matplotlib-scalebar`
-- `contextily`
-- `fiona`
-- `numpy`
-
-Install dependencies using the following command:
-```bash
-pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy
-```
 ### Usage
-
 1. Place the required GeoPackage files (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`) in the working directory.
 2. Run the script to generate visualizations and analyses.
 3. Check the `geospatial_analysis_report.pdf` file for the compiled results.
-
 ### Visual Outputs
-
 The script produces the following visualizations:
 - Individual layer maps.
 - Cluster analysis charts (profile and spider charts).
