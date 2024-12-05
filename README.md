@@ -1,5 +1,8 @@
 # README: Geographic Data Analysis 
 
+## Introduction
+This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (Imredd), perform spatial analyses, and generate insights into urban structures and accessibility. The outputs include enriched geospatial datasets, clustering analyses, and comprehensive visualizations compiled into a professional PDF report.
+
 ## Main Objective
 This project aims to detect and analyze points of interest (POI) within a defined geographic area, here Imredd in Nice. We use a Python script to identify and visualize these points by leveraging geographic data, APIs, or other information sources.
 
@@ -34,15 +37,7 @@ Activate the environment and run the associated Python scripts.
 The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice.
 Detailed Objectives
 
-
-## Introduction
-
-This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (Imredd), perform spatial analyses, and generate insights into urban structures and accessibility. The outputs include enriched geospatial datasets, clustering analyses, and comprehensive visualizations compiled into a professional PDF report.
-
----
-
 ## Requirements
-
 The toolkit requires the following Python libraries:
 - `geopandas`
 - `matplotlib`
@@ -59,8 +54,6 @@ Install dependencies using:
 pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy scikit-learn momepy osmnx
 ```
 
----
-
 ## Usage
 
 1. Execute the modules in order:
@@ -70,8 +63,6 @@ pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy scik
 2. Check the outputs:
    - Enriched GeoPackages (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`).
    - PDF report: `geospatial_analysis_report.pdf`.
-
----
 
 ## Key Libraries and Tools
 
@@ -119,6 +110,8 @@ The script generates a GeoPackage containing several layers:
 - `filtered_poi`: Processed POI data (retaining only relevant attributes).
 - `filtered_buildings_v2`: Final dataset with additional predicted values for the number of floors (`FLPRED`).
 
+---
+
 ## Module 2
 This script performs clustering analysis on building data using the KMeans algorithm and evaluates the clustering quality using the silhouette score. The analysis is based on a set of building features, such as convexity, elongation, proximity to points of interest (POI), surface area, and mobility accessibility. The process involves loading geospatial data from a GeoPackage, normalizing the data, applying KMeans clustering for various numbers of clusters, evaluating the results using silhouette scores, and finally assigning the optimal clusters to each building.
 ### Key steps:
@@ -141,6 +134,8 @@ This script performs clustering analysis on building data using the KMeans algor
 ### Output:
 - A new GeoPackage (`SDM24_Imredd_filtered_clusters.gpkg`) containing the clustered buildings, with a new column "cluster" indicating the assigned cluster label for each building.
 - A plot visualizing the silhouette scores for different numbers of clusters.
+
+---
 
 ## Module 3
 This Python script is a comprehensive geospatial analysis and visualization tool that performs various tasks, including loading GeoPackage files, generating maps, and analyzing clustered data. Below is an overview of the key features and functionalities:
