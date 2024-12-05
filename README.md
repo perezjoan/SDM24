@@ -53,11 +53,6 @@ The toolkit requires the following Python libraries:
 - `momepy`
 - `osmnx`
 
-Install dependencies using:
-```bash
-pip install geopandas matplotlib matplotlib-scalebar contextily fiona numpy scikit-learn momepy osmnx
-```
-
 ## Usage
 
 1. Execute the modules in order:
