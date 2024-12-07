@@ -5,10 +5,10 @@ _This project is the result of a workshop titled "SDM Statistics and Data Mining
 # README: Geographic Data Analysis 
 
 ## Introduction
-This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (Imredd), perform spatial analyses, and generate insights into urban structures and accessibility. The outputs include enriched geospatial datasets, clustering analyses, and comprehensive visualizations compiled into a professional PDF report.
+This repository contains a series of Python scripts designed to retrieve, process, analyze, and visualize geographic data. The tools leverage OpenStreetMap (OSM) data to explore a specific area (IMREDD in Nice, France), perform spatial analyses, and generate insights into urban structures and accessibility from the building level. The outputs include enriched geospatial datasets, clustering analyses, and visualizations compiled into a PDF report.
 
 ## Main Objective
-This project aims to detect and analyze points of interest (POI) within a defined geographic area, here Imredd in Nice. We use a Python script to identify and visualize these points by leveraging geographic data, APIs, or other information sources.
+This project aims to detect and analyze OSM points of interest (POI), streets and buildings within a predefined geographic area.
 
 ## Installation Steps
 Follow these steps to run Python algorithms on Windows:
@@ -39,29 +39,14 @@ Create a specific environment IMREDD :
 
 6. In Jupyter Home, open and run the .ipynb scripts. Always remember to use this environment with 'conda activate IMREDD'
 
-Activate the environment and run the associated Python scripts.
-
 ## Data Used
-The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice.
-Detailed Objectives
-
-## Requirements
-The toolkit requires the following Python libraries:
-- `geopandas`
-- `matplotlib`
-- `matplotlib-scalebar`
-- `contextily`
-- `fiona`
-- `numpy`
-- `scikit-learn`
-- `momepy`
-- `osmnx`
+The protocol is designed for a global application, requiring only the coordinates of a bounding area for the area of interest. However, in this example, the choice was made to use a portion of the city of Nice around IMREDD.
 
 ## Usage
 
 1. Execute the modules in order:
-   - **Module 1**: Data retrieval and indicator calculation.
-   - **Module 2**: Clustering analysis.
+   - **Module 1**: Data retrieval and indicator calculation at the building level
+   - **Module 2**: Clustering analysis at the building level
    - **Module 3**: Visualization and reporting.
 2. Check the outputs:
    - Enriched GeoPackages (`SDM24_Imredd_filtered.gpkg` and `SDM24_Imredd_filtered_clusters.gpkg`).
